@@ -1,0 +1,11 @@
+/raw/
+/blender/
+*.blend1
+*.blend2
+*.blend@
+/build/
+/devel/
+/install/
+/logs/
+*~
+.DS_Store

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="joy_dev" default="/dev/input/js1"/>
+  <node pkg="joy" type="joy_node" name="joy_node" output="screen">
+    <param name="dev" value="$(arg joy_dev)"/>
+  </node>
+  <node pkg="teleop_twist_joy" type="teleop_node"
+        name="teleop_twist_joy_node" output="screen">
+    <rosparam command="load" file="$(find realworld_sim)/config/omni_plus.yaml"/>
+    <remap from="cmd_vel" to="/cmd_vel"/>
+  </node>
+</launch>

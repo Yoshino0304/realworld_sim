@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+  <env name="GAZEBO_MODEL_PATH"
+       value="$(find realworld_sim)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+
+  <arg name="world_name"
+       default="$(find realworld_sim)/worlds/scaniverse_large_classroom_area.world"/>
+  <arg name="x_pos" default="-10.96"/>
+  <arg name="y_pos" default="1.82"/>
+  <arg name="z_pos" default="0.60"/>
+  <arg name="yaw" default="0.0"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description"
+         command="$(find xacro)/xacro --inorder $(find realworld_sim)/urdf/turtlebot3_burger_camera.urdf.xacro"/>
+
+  <node pkg="gazebo_ros"
+        type="spawn_model"
+        name="spawn_tb3"
+        output="screen"
+        args="-urdf -model tb3 -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw) -param robot_description"/>
+
+  <node pkg="robot_state_publisher"
+        type="robot_state_publisher"
+        name="robot_state_publisher"
+        output="screen"/>
+</launch>
