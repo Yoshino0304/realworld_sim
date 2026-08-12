@@ -33,6 +33,7 @@ ROS Noeticを導入済みのUbuntu 20.04で、必要なパッケージをイン�
 ```bash
 sudo apt update
 sudo apt install \
+  git \
   ros-noetic-gazebo-ros-pkgs \
   ros-noetic-joy \
   ros-noetic-teleop-twist-joy \
@@ -46,7 +47,7 @@ Catkinワークスペースへクローンしてビルドします。
 ```bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
-git clone <REPOSITORY_URL> realworld_sim
+git clone https://github.com/Yoshino0304/realworld_sim.git
 cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
