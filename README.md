@@ -1,5 +1,9 @@
 # realworld_sim
 
+![Gazebo simulation overview](docs/images/gazebo_overview.png)
+
+*ScaniverseのLiDARスキャンから構築したGazebo Classic環境の全景。*
+
 ScaniverseのLiDARスキャンから作成した、大学屋内環境のROS 1 / Gazebo Classic用シミュレータです。TurtleBot3 Burger、ロボット正面カメラ、上空カメラ、ゲームパッド操作を含みます。
 
 ## 動作環境
