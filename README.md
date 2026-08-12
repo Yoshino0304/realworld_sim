@@ -42,22 +42,24 @@ sudo apt install \
   ros-noetic-xacro
 ```
 
-Catkinワークスペースへクローンしてビルドします。
+使用するCatkinワークスペースの `src/` ディレクトリへクローンし、ワークスペースをビルドします。
 
 ```bash
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src
+export CATKIN_WS=/path/to/your/catkin_workspace
+cd "$CATKIN_WS/src"
 git clone https://github.com/Yoshino0304/realworld_sim.git
-cd ~/catkin_ws
+cd ..
 catkin_make
 source devel/setup.bash
 ```
+
+`/path/to/your/catkin_workspace` は、各自が使用しているワークスペースのパスへ置き換えてください。
 
 ## シミュレータの起動
 
 ```bash
 source /opt/ros/noetic/setup.bash
-source ~/catkin_ws/devel/setup.bash
+source "$CATKIN_WS/devel/setup.bash"
 roslaunch realworld_sim scaniverse_tb3.launch
 ```
 
